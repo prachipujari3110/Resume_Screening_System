@@ -119,6 +119,7 @@ with:
 Required Job Skills
 
 and calculates the percentage of matching skills.
+_________________________________________________________________________________________
 
 📊 Dataset
 
@@ -138,6 +139,7 @@ Education
 Label
 
 The dataset is intended for educational and academic project demonstration.
+______________________________________________________________________________________________________________
 
 🛠️ Technology Stack
 Backend
@@ -162,6 +164,7 @@ Development Tools
 Visual Studio Code
 Git
 GitHub
+_______________________________________________________________________________________________________
 🔄 System Workflow
 User Login
     ↓
@@ -188,7 +191,9 @@ Logistic Regression
 AI Suitability Score
     ↓
 Resume Screening Result
+_________________________________________________________________________________________________________________
 📁 Project Structure
+
 Resume_Screening_System/
 │
 ├── app.py
@@ -218,7 +223,9 @@ Resume_Screening_System/
 │
 └── uploads/
     └── resumes/
+______________________________________________________________________________________________________________
 ⚙️ Installation & Setup
+
 1. Clone the Repository
 git clone https://github.com/prachipujari3110/Resume_Screening_System.git
 
@@ -245,6 +252,8 @@ python app.py
 Open the application in your browser:
 
 http://127.0.0.1:5000
+_______________________________________________________________________________________________________
+
 🔐 Security
 
 The project supports security practices such as:
@@ -257,6 +266,7 @@ Environment-based configuration
 
 Sensitive information such as database passwords, API keys, and secret credentials should not be stored directly in the GitHub repository.
 
+_____________________________________________________________________________________________________
 📈 Future Enhancements
 
 Future versions of the project can include:
@@ -286,12 +296,15 @@ Machine Learning
 Data Processing
 Git
 GitHub
+_____________________________________________________________________________________________________________________
 👩‍💻 Author
 Prachi Pujari
 
 GitHub:
 
 https://github.com/prachipujari3110
+
+______________________________________________________________________________________________________________________
 
 ⭐ Project Goal
 
