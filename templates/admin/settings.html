@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Admin Settings
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+        <span class="pill">SYSTEM SETTINGS</span>
+
+        <h1>
+            Project settings
+        </h1>
+    </div>
+
+</div>
+
+
+<div class="grid2">
+
+    <div class="panel">
+
+        <h2>
+            Technology Stack
+        </h2>
+
+        <div class="chip-list">
+
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">Python</span>
+            <span class="chip">Flask</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">Pandas</span>
+            <span class="chip">NumPy</span>
+            <span class="chip">Scikit-learn</span>
+            <span class="chip">pypdf</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h2>
+            Database
+        </h2>
+
+        <p>
+            Database:
+            <b>resume_screening</b>
+        </p>
+
+        <p>
+            MySQL Port:
+            <b>3308</b>
+        </p>
+
+        <p>
+            Server:
+            <b>localhost</b>
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

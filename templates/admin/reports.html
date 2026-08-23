@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Admin Reports
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+        <span class="pill">REPORTS</span>
+
+        <h1>
+            Hiring reports
+        </h1>
+    </div>
+
+    <a class="btn"
+       href="{{ url_for('export_report') }}">
+        Export CSV
+    </a>
+
+</div>
+
+
+<div class="stats">
+
+    <div class="stat">
+        <span>Total Screenings</span>
+        <b>{{ totals.total or 0 }}</b>
+    </div>
+
+    <div class="stat">
+        <span>Selected</span>
+        <b>{{ totals.selected or 0 }}</b>
+    </div>
+
+    <div class="stat">
+        <span>Rejected</span>
+        <b>{{ totals.rejected or 0 }}</b>
+    </div>
+
+    <div class="stat">
+        <span>Average ATS</span>
+        <b>{{ "%.1f"|format(totals.avg_ats or 0) }}%</b>
+    </div>
+
+    <div class="stat">
+        <span>Average AI</span>
+        <b>{{ "%.1f"|format(totals.avg_ai or 0) }}%</b>
+    </div>
+
+</div>
+
+
+<div class="panel table-wrap">
+
+<table>
+
+    <tr>
+        <th>Job</th>
+        <th>Total</th>
+        <th>Selected</th>
+        <th>Rejected</th>
+        <th>Average ATS</th>
+    </tr>
+
+    {% for j in jobs %}
+
+    <tr>
+        <td>{{ j.title }}</td>
+        <td>{{ j.total or 0 }}</td>
+        <td>{{ j.selected or 0 }}</td>
+        <td>{{ j.rejected or 0 }}</td>
+        <td>{{ "%.1f"|format(j.avg_score or 0) }}%</td>
+    </tr>
+
+    {% else %}
+
+    <tr>
+        <td colspan="5" class="empty">
+            No data available.
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+</div>
+
+{% endblock %}

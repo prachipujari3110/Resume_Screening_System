@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Candidates
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+        <span class="pill">CANDIDATES</span>
+
+        <h1>
+            Candidate resumes
+        </h1>
+
+        <p>
+            Review uploaded resumes and screening results.
+        </p>
+    </div>
+
+</div>
+
+
+<div class="filter-row">
+
+    <a class="{{ 'active' if status == 'All' else '' }}"
+       href="{{ url_for('admin_candidates', status='All') }}">
+        All
+    </a>
+
+    <a class="{{ 'active' if status == 'Selected' else '' }}"
+       href="{{ url_for('admin_candidates', status='Selected') }}">
+        Selected
+    </a>
+
+    <a class="{{ 'active' if status == 'Rejected' else '' }}"
+       href="{{ url_for('admin_candidates', status='Rejected') }}">
+        Rejected
+    </a>
+
+    <a class="{{ 'active' if status == 'Pending' else '' }}"
+       href="{{ url_for('admin_candidates', status='Pending') }}">
+        Pending
+    </a>
+
+</div>
+
+
+<div class="panel table-wrap">
+
+<table>
+
+    <tr>
+        <th>Candidate</th>
+        <th>Job</th>
+        <th>ATS</th>
+        <th>AI</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for r in rows %}
+
+    <tr>
+
+        <td>
+            <b>{{ r.full_name }}</b>
+            <small>{{ r.email }}</small>
+        </td>
+
+        <td>{{ r.title }}</td>
+
+        <td>{{ r.ats_score }}%</td>
+
+        <td>{{ r.ai_score }}%</td>
+
+        <td>
+            <span class="status {{ r.status|lower }}">
+                {{ r.status }}
+            </span>
+        </td>
+
+        <td>
+            <a class="btn btn-small"
+               href="{{ url_for('candidate_detail', rid=r.id) }}">
+                Review
+            </a>
+        </td>
+
+    </tr>
+
+    {% else %}
+
+    <tr>
+        <td colspan="6" class="empty">
+            No candidates found.
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+</div>
+
+{% endblock %}

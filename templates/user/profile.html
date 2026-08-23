@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}
+My Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+
+        <span class="pill">
+            PROFILE
+        </span>
+
+        <h1>
+            Candidate profile
+        </h1>
+
+    </div>
+
+</div>
+
+
+<div class="panel">
+
+<form method="post"
+      enctype="multipart/form-data"
+      class="form-grid two">
+
+    <label>
+        Full Name
+        <input name="full_name"
+               value="{{ user.full_name }}"
+               required>
+    </label>
+
+    <label>
+        Email
+        <input value="{{ user.email }}"
+               disabled>
+    </label>
+
+    <label>
+        Mobile
+        <input name="mobile"
+               value="{{ user.mobile or '' }}">
+    </label>
+
+    <label>
+        Qualification
+        <input name="qualification"
+               value="{{ user.qualification or '' }}">
+    </label>
+
+    <label>
+        Experience
+        <input name="experience"
+               value="{{ user.experience or '' }}">
+    </label>
+
+    <label>
+        Location
+        <input name="location"
+               value="{{ user.location or '' }}">
+    </label>
+
+    <label class="span2">
+        Profile Photo
+        <input type="file"
+               name="photo"
+               accept="image/png,image/jpeg">
+    </label>
+
+    <div class="span2">
+        <button class="btn"
+                type="submit">
+            Save Profile
+        </button>
+    </div>
+
+</form>
+
+</div>
+
+
+<div class="panel">
+
+    <h2>
+        Account Security
+    </h2>
+
+    <p>
+        Email verified:
+        <b>
+            {{ 'Yes' if user.email_verified else 'No' }}
+        </b>
+    </p>
+
+</div>
+
+{% endblock %}

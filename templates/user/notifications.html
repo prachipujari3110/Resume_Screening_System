@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Notifications
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+
+        <span class="pill">
+            NOTIFICATION CENTER
+        </span>
+
+        <h1>
+            Updates and decisions
+        </h1>
+
+    </div>
+
+</div>
+
+
+<div class="panel">
+
+    {% for n in rows %}
+
+        <div class="list-item">
+
+            <b>
+                {{ n.title }}
+            </b>
+
+            <span>
+                {{ n.created_at }}
+            </span>
+
+            <small>
+                {{ n.message }}
+            </small>
+
+        </div>
+
+    {% else %}
+
+        <div class="empty">
+            No notifications yet.
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

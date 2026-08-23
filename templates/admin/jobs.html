@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Job Management
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+        <span class="pill">JOB MANAGEMENT</span>
+
+        <h1>
+            Create and manage jobs
+        </h1>
+    </div>
+
+</div>
+
+
+<div class="grid2">
+
+    <div class="panel">
+
+        <h2>
+            Create New Job
+        </h2>
+
+        <form method="post"
+              class="form-grid">
+
+            <label>
+                Job Title
+                <input name="title" required>
+            </label>
+
+            <label>
+                Department
+                <input name="department" required>
+            </label>
+
+            <label>
+                Experience
+                <input name="experience"
+                       placeholder="Fresher / 0-2 Years">
+            </label>
+
+            <label>
+                Location
+                <input name="location"
+                       value="Pune">
+            </label>
+
+            <label>
+                Description
+                <textarea name="description"
+                          required></textarea>
+            </label>
+
+            <label>
+                Required Skills
+                <input name="required_skills"
+                       placeholder="Python, Flask, MySQL"
+                       required>
+            </label>
+
+            <button class="btn"
+                    type="submit">
+                Create Job
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h2>
+            Current Jobs
+        </h2>
+
+        {% for j in rows %}
+
+            <div class="job-item">
+
+                <div>
+                    <h3>{{ j.title }}</h3>
+
+                    <span>
+                        {{ j.department }}
+                        •
+                        {{ j.experience }}
+                        •
+                        {{ j.location }}
+                    </span>
+
+                    <p>
+                        {{ j.required_skills }}
+                    </p>
+                </div>
+
+                <span class="status {{ j.status|lower }}">
+                    {{ j.status }}
+                </span>
+
+                <form method="post"
+                      action="{{ url_for('toggle_job', job_id=j.id) }}">
+
+                    <button class="btn btn-small ghost"
+                            type="submit">
+                        {% if j.status == 'Open' %}
+                            Close Job
+                        {% else %}
+                            Re-open Job
+                        {% endif %}
+                    </button>
+
+                </form>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

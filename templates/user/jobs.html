@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Open Jobs
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+
+        <span class="pill">
+            OPEN POSITIONS
+        </span>
+
+        <h1>
+            Find a job
+        </h1>
+
+        <p>
+            Select a job and screen your resume.
+        </p>
+
+    </div>
+
+    <a class="btn"
+       href="{{ url_for('upload_resume') }}">
+        Upload Resume
+    </a>
+
+</div>
+
+
+<div class="job-grid">
+
+{% for j in jobs %}
+
+    <div class="job-card">
+
+        <div class="job-icon">
+            {{ j.title[0] }}
+        </div>
+
+        <h2>
+            {{ j.title }}
+        </h2>
+
+        <p>
+            {{ j.description }}
+        </p>
+
+        <div class="job-meta">
+
+            <span>{{ j.department }}</span>
+            <span>{{ j.experience }}</span>
+            <span>{{ j.location }}</span>
+
+        </div>
+
+        <div class="chip-list">
+
+            {% for skill in j.required_skills.split(',')[:7] %}
+
+                <span class="chip">
+                    {{ skill.strip() }}
+                </span>
+
+            {% endfor %}
+
+        </div>
+
+        <a class="btn btn-small"
+           href="{{ url_for('upload_resume') }}">
+            Screen Resume
+        </a>
+
+    </div>
+
+{% else %}
+
+    <div class="panel empty">
+        No open jobs currently.
+    </div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

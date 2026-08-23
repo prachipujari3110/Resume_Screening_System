@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Audit Logs
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+        <span class="pill">SYSTEM AUDIT</span>
+
+        <h1>
+            Admin activity log
+        </h1>
+
+        <p>
+            Records important administrator actions.
+        </p>
+    </div>
+
+</div>
+
+
+<div class="panel table-wrap">
+
+<table>
+
+    <tr>
+        <th>Admin</th>
+        <th>Action</th>
+        <th>Details</th>
+        <th>Time</th>
+    </tr>
+
+    {% for r in rows %}
+
+    <tr>
+
+        <td>
+            {{ r.full_name or 'Admin' }}
+        </td>
+
+        <td>
+            {{ r.action }}
+        </td>
+
+        <td>
+            {{ r.details }}
+        </td>
+
+        <td>
+            {{ r.created_at }}
+        </td>
+
+    </tr>
+
+    {% else %}
+
+    <tr>
+        <td colspan="4" class="empty">
+            No audit events yet.
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Candidate Registration
+{% endblock %}
+
+{% block content %}
+
+<div class="auth-card">
+
+    <span class="pill">
+        CANDIDATE REGISTRATION
+    </span>
+
+    <h1>
+        Create your account
+    </h1>
+
+    <p>
+        Enter your basic details to create a candidate account.
+    </p>
+
+    <form method="post"
+          class="form-grid two">
+
+        <label>
+            Full Name
+            <input type="text"
+                   name="full_name"
+                   required>
+        </label>
+
+        <label>
+            Email
+            <input type="email"
+                   name="email"
+                   required>
+        </label>
+
+        <label>
+            Mobile
+            <input type="text"
+                   name="mobile"
+                   required>
+        </label>
+
+        <label>
+            Qualification
+            <input type="text"
+                   name="qualification"
+                   placeholder="MCA / BCA / B.Tech">
+        </label>
+
+        <label>
+            Experience
+            <input type="text"
+                   name="experience"
+                   placeholder="Fresher / 1 Year">
+        </label>
+
+        <label>
+            Location
+            <input type="text"
+                   name="location"
+                   placeholder="Pune">
+        </label>
+
+        <label>
+            Password
+            <input type="password"
+                   name="password"
+                   minlength="6"
+                   required>
+        </label>
+
+        <label>
+            Confirm Password
+            <input type="password"
+                   name="confirm_password"
+                   minlength="6"
+                   required>
+        </label>
+
+        <div class="span2">
+            <button class="btn full"
+                    type="submit">
+                Register
+            </button>
+        </div>
+
+    </form>
+
+    <div class="auth-links">
+        Already registered?
+        <a href="{{ url_for('login') }}">
+            Login
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

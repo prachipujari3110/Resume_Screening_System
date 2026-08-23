@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}
+My Reports
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+
+        <span class="pill">
+            CANDIDATE REPORT
+        </span>
+
+        <h1>
+            My screening report
+        </h1>
+
+    </div>
+
+</div>
+
+
+<div class="stats">
+
+    <div class="stat">
+        <span>Total Screenings</span>
+        <b>{{ summary.total or 0 }}</b>
+    </div>
+
+    <div class="stat">
+        <span>Average ATS</span>
+        <b>{{ "%.1f"|format(summary.avg_ats or 0) }}%</b>
+    </div>
+
+    <div class="stat">
+        <span>Average AI</span>
+        <b>{{ "%.1f"|format(summary.avg_ai or 0) }}%</b>
+    </div>
+
+    <div class="stat">
+        <span>Selected</span>
+        <b>{{ summary.selected or 0 }}</b>
+    </div>
+
+    <div class="stat">
+        <span>Rejected</span>
+        <b>{{ summary.rejected or 0 }}</b>
+    </div>
+
+</div>
+
+
+<div class="panel">
+
+    <h2>
+        Job-wise Performance
+    </h2>
+
+    {% for j in jobs %}
+
+        <div class="bar-row">
+
+            <span>
+                {{ j.title }}
+            </span>
+
+            <div class="bar">
+                <span style="width: {{ j.avg_ats or 0 }}%"></span>
+            </div>
+
+            <b>
+                {{ "%.1f"|format(j.avg_ats or 0) }}%
+            </b>
+
+        </div>
+
+    {% else %}
+
+        <div class="empty">
+            No analytics available.
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Candidate Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+
+        <span class="pill">
+            CANDIDATE DASHBOARD
+        </span>
+
+        <h1>
+            Good to see you,
+            {{ profile.full_name.split(' ')[0] }}
+        </h1>
+
+        <p>
+            Track your resume screening journey.
+        </p>
+
+    </div>
+
+    <a class="btn"
+       href="{{ url_for('upload_resume') }}">
+        Screen New Resume
+    </a>
+
+</div>
+
+
+<div class="stats">
+
+    <div class="stat">
+        <span>My Resumes</span>
+        <b>{{ stats.resumes }}</b>
+    </div>
+
+    <div class="stat">
+        <span>Screenings</span>
+        <b>{{ stats.screenings }}</b>
+    </div>
+
+    <div class="stat">
+        <span>Selected</span>
+        <b>{{ stats.selected }}</b>
+    </div>
+
+    <div class="stat">
+        <span>Rejected</span>
+        <b>{{ stats.rejected }}</b>
+    </div>
+
+</div>
+
+
+<div class="grid2">
+
+    <div class="panel">
+
+        <h2>
+            Recent Screening Activity
+        </h2>
+
+        {% if recent %}
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <tr>
+                        <th>Job</th>
+                        <th>ATS</th>
+                        <th>AI</th>
+                        <th>Status</th>
+                    </tr>
+
+                    {% for r in recent %}
+
+                    <tr>
+
+                        <td>{{ r.title }}</td>
+                        <td>{{ r.ats_score }}%</td>
+                        <td>{{ r.ai_score }}%</td>
+
+                        <td>
+                            <span class="status {{ r.status|lower }}">
+                                {{ r.status }}
+                            </span>
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </table>
+
+            </div>
+
+        {% else %}
+
+            <div class="empty">
+                No screenings yet.
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="panel">
+
+        <h2>
+            Quick Actions
+        </h2>
+
+        <div class="actions">
+
+            <a class="btn"
+               href="{{ url_for('user_jobs') }}">
+                Browse Jobs
+            </a>
+
+            <a class="btn ghost"
+               href="{{ url_for('user_reports') }}">
+                My Reports
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

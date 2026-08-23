@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+
+{% block title %}
+AI Resume Screening System
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="pill">
+            AI + ML + ATS
+        </span>
+
+        <h1>
+            Smart hiring starts with
+            <span class="gradient-text">
+                better resumes.
+            </span>
+        </h1>
+
+        <p>
+            A resume screening system that compares candidate skills
+            with job requirements and provides an easy screening result.
+        </p>
+
+        <div class="actions">
+
+            <a class="btn"
+               href="{{ url_for('register') }}">
+                Create Candidate Account
+            </a>
+
+            <a class="btn ghost"
+               href="{{ url_for('login') }}">
+                Login
+            </a>
+
+        </div>
+
+        <div class="mini-stats">
+
+            <div>
+                <b>ATS</b>
+                <small>Skill Match</small>
+            </div>
+
+            <div>
+                <b>ML</b>
+                <small>Prediction</small>
+            </div>
+
+            <div>
+                <b>2FA</b>
+                <small>Security</small>
+            </div>
+
+            <div>
+                <b>MYSQL</b>
+                <small>Database</small>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="scanner-card">
+
+        <div class="scanner-top">
+            <span>RESUME SCANNER</span>
+            <span>READY</span>
+        </div>
+
+        <div class="scanner-center">
+
+            <div class="resume-icon">
+                CV
+            </div>
+
+            <div class="score-orb">
+                86%
+                <small>AI Score</small>
+            </div>
+
+        </div>
+
+        <div class="skill-cloud">
+
+            <span>Python</span>
+            <span>Flask</span>
+            <span>MySQL</span>
+            <span>Pandas</span>
+            <span>SQL</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+
+        </div>
+
+        <div class="decision">
+            ✓ Resume Ready for Review
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <span class="pill">
+            FEATURES
+        </span>
+
+        <h2>
+            Complete recruitment workflow
+        </h2>
+
+        <p>
+            Simple modules connected through Flask and MySQL.
+        </p>
+
+    </div>
+
+
+    <div class="grid3">
+
+        <div class="feature-card">
+            <div class="feature-number">01</div>
+            <h3>Candidate Portal</h3>
+            <p>
+                Registration, login, profile, resume upload,
+                screening history and notifications.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-number">02</div>
+            <h3>Resume Screening</h3>
+            <p>
+                PDF text extraction, skill detection,
+                ATS score and basic ML classification.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-number">03</div>
+            <h3>Admin Control</h3>
+            <p>
+                Manage jobs, candidates, screenings,
+                reports and final decisions.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="grid2">
+
+        <div class="panel">
+
+            <span class="pill">
+                TECHNOLOGY
+            </span>
+
+            <h2>
+                Easy to explain in a project viva
+            </h2>
+
+            <p>
+                The project uses Python and Flask for backend logic,
+                MySQL for data storage and HTML, CSS and JavaScript
+                for the interface.
+            </p>
+
+            <div class="chip-list">
+
+                <span class="chip">Python</span>
+                <span class="chip">Flask</span>
+                <span class="chip">MySQL</span>
+                <span class="chip">Pandas</span>
+                <span class="chip">NumPy</span>
+                <span class="chip">Scikit-learn</span>
+                <span class="chip">HTML</span>
+                <span class="chip">CSS</span>
+                <span class="chip">JavaScript</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h2>
+                How it works
+            </h2>
+
+            <ol class="steps">
+
+                <li>Create an account</li>
+                <li>Select an open job</li>
+                <li>Upload a PDF resume</li>
+                <li>Extract and detect skills</li>
+                <li>Calculate ATS and AI scores</li>
+                <li>Save the result in MySQL</li>
+                <li>Review the screening result</li>
+
+            </ol>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

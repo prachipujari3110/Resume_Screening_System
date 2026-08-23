@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Candidate Review
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+        <span class="pill">RECRUITER REVIEW</span>
+
+        <h1>
+            {{ row.full_name }}
+        </h1>
+
+        <p>
+            {{ row.email }}
+            •
+            {{ row.mobile or 'No mobile' }}
+        </p>
+    </div>
+
+    <a class="btn ghost"
+       href="{{ url_for('resume_file', name=row.file_name) }}">
+        Download Resume
+    </a>
+
+</div>
+
+
+<div class="grid2">
+
+    <div class="panel">
+
+        <h2>
+            Candidate Profile
+        </h2>
+
+        <div class="detail-row">
+            <b>Qualification</b>
+            <span>{{ row.qualification or '-' }}</span>
+        </div>
+
+        <div class="detail-row">
+            <b>Experience</b>
+            <span>{{ row.experience or '-' }}</span>
+        </div>
+
+        <div class="detail-row">
+            <b>Job</b>
+            <span>{{ row.title }}</span>
+        </div>
+
+        <h3>
+            Detected Skills
+        </h3>
+
+        <div class="chip-list">
+
+            {% for skill in row.detected_skills.split(',') if skill.strip() %}
+
+                <span class="chip">
+                    {{ skill.strip() }}
+                </span>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h2>
+            Screening Summary
+        </h2>
+
+        <div class="score-box">
+            <span>ATS Score</span>
+            <strong>{{ row.ats_score }}%</strong>
+        </div>
+
+        <div class="progress">
+            <span style="width: {{ row.ats_score }}%"></span>
+        </div>
+
+        <div class="score-box">
+            <span>AI Score</span>
+            <strong>{{ row.ai_score }}%</strong>
+        </div>
+
+        <div class="progress">
+            <span style="width: {{ row.ai_score }}%"></span>
+        </div>
+
+        <h3>
+            Matching Skills
+        </h3>
+
+        <div class="chip-list">
+
+            {% for skill in row.matching_skills.split(',') if skill.strip() %}
+
+                <span class="chip good">
+                    ✓ {{ skill.strip() }}
+                </span>
+
+            {% else %}
+
+                <span class="muted">
+                    None
+                </span>
+
+            {% endfor %}
+
+        </div>
+
+        <h3>
+            Missing Skills
+        </h3>
+
+        <div class="chip-list">
+
+            {% for skill in row.missing_skills.split(',') if skill.strip() %}
+
+                <span class="chip bad">
+                    {{ skill.strip() }}
+                </span>
+
+            {% else %}
+
+                <span class="muted">
+                    None
+                </span>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="panel">
+
+    <h2>
+        Final Recruitment Decision
+    </h2>
+
+    <p>
+        Current status:
+        <b>{{ row.status }}</b>
+    </p>
+
+    <div class="actions">
+
+        <form method="post"
+              action="{{ url_for('candidate_decision', rid=row.id, decision='Selected') }}">
+            <button class="btn success"
+                    type="submit">
+                Select Candidate
+            </button>
+        </form>
+
+        <form method="post"
+              action="{{ url_for('candidate_decision', rid=row.id, decision='Rejected') }}">
+            <button class="btn danger"
+                    type="submit">
+                Reject Candidate
+            </button>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Screening Result
+{% endblock %}
+
+{% block content %}
+
+<div class="result-hero">
+
+    <span class="pill">
+        SCREENING RESULT
+    </span>
+
+    <h1>
+        {{ row.title }}
+    </h1>
+
+    <div class="big-score">
+        {{ row.ats_score }}%
+        <small>ATS Score</small>
+    </div>
+
+    <span class="status {{ row.status|lower }}">
+        {{ row.status }}
+    </span>
+
+    <p>
+        AI Score:
+        <b>{{ row.ai_score }}%</b>
+        |
+        ML:
+        <b>{{ row.ml_label }}</b>
+    </p>
+
+</div>
+
+
+<div class="grid2">
+
+    <div class="panel">
+
+        <h2>
+            Score Breakdown
+        </h2>
+
+        <div class="score-box">
+            <span>ATS Skill Match</span>
+            <strong>{{ row.ats_score }}%</strong>
+        </div>
+
+        <div class="progress">
+            <span style="width: {{ row.ats_score }}%"></span>
+        </div>
+
+        <div class="score-box">
+            <span>AI Suitability</span>
+            <strong>{{ row.ai_score }}%</strong>
+        </div>
+
+        <div class="progress">
+            <span style="width: {{ row.ai_score }}%"></span>
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h2>
+            Skills Analysis
+        </h2>
+
+        <h3>
+            Matching Skills
+        </h3>
+
+        <div class="chip-list">
+
+            {% for s in row.matching_skills.split(',') if s.strip() %}
+
+                <span class="chip good">
+                    ✓ {{ s.strip() }}
+                </span>
+
+            {% else %}
+
+                <span class="muted">
+                    No matching skills
+                </span>
+
+            {% endfor %}
+
+        </div>
+
+
+        <h3>
+            Missing Skills
+        </h3>
+
+        <div class="chip-list">
+
+            {% for s in row.missing_skills.split(',') if s.strip() %}
+
+                <span class="chip bad">
+                    {{ s.strip() }}
+                </span>
+
+            {% else %}
+
+                <span class="muted">
+                    No major missing skills
+                </span>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="panel">
+
+    <div class="panel-head">
+
+        <h2>
+            Detected Skills
+        </h2>
+
+        <a class="btn btn-small ghost"
+           href="{{ url_for('resume_file', name=row.file_name) }}">
+            Download PDF
+        </a>
+
+    </div>
+
+    <div class="chip-list">
+
+        {% for s in row.detected_skills.split(',') if s.strip() %}
+
+            <span class="chip">
+                {{ s.strip() }}
+            </span>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

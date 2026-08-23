@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}
+My Screenings
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+
+        <span class="pill">
+            SCREENING HISTORY
+        </span>
+
+        <h1>
+            My AI screening history
+        </h1>
+
+    </div>
+
+</div>
+
+
+<div class="panel table-wrap">
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Job</th>
+        <th>Matching</th>
+        <th>Missing</th>
+        <th>ATS</th>
+        <th>AI</th>
+        <th>Status</th>
+        <th>Date</th>
+    </tr>
+
+    {% for r in rows %}
+
+    <tr>
+
+        <td>#{{ r.id }}</td>
+        <td>{{ r.title }}</td>
+        <td>{{ r.matching_skills or '-' }}</td>
+        <td>{{ r.missing_skills or '-' }}</td>
+        <td>{{ r.ats_score }}%</td>
+        <td>{{ r.ai_score }}%</td>
+
+        <td>
+            <span class="status {{ r.status|lower }}">
+                {{ r.status }}
+            </span>
+        </td>
+
+        <td>{{ r.screened_at }}</td>
+
+    </tr>
+
+    {% else %}
+
+    <tr>
+        <td colspan="8" class="empty">
+            No screening history.
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+</div>
+
+{% endblock %}

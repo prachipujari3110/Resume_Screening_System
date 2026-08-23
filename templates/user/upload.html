@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}
+AI Resume Screening
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+
+        <span class="pill">
+            AI SCREENING
+        </span>
+
+        <h1>
+            Upload your resume
+        </h1>
+
+        <p>
+            Upload a PDF and compare it with a selected job.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="grid2">
+
+    <div class="panel">
+
+        <form method="post"
+              enctype="multipart/form-data"
+              class="form-grid">
+
+            <label>
+                Job Role
+
+                <select name="job_id"
+                        required>
+
+                    <option value="">
+                        Select a job
+                    </option>
+
+                    {% for j in jobs %}
+
+                        <option value="{{ j.id }}">
+                            {{ j.title }}
+                            -
+                            {{ j.experience }}
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </label>
+
+
+            <label>
+                Resume PDF
+
+                <input type="file"
+                       name="resume"
+                       accept=".pdf,application/pdf"
+                       required>
+            </label>
+
+
+            <button class="btn"
+                    type="submit">
+                Run Screening
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h2>
+            Screening Steps
+        </h2>
+
+        <ol class="steps">
+
+            <li>Read the PDF text</li>
+            <li>Detect resume skills</li>
+            <li>Compare job skills</li>
+            <li>Calculate ATS score</li>
+            <li>Calculate AI score</li>
+            <li>Store result in MySQL</li>
+
+        </ol>
+
+    </div>
+
+</div>
+
+{% endblock %}

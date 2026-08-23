@@ -1,0 +1,13 @@
+Job_Role,Required_Skills
+Python Developer,"Python, Flask, SQL, MySQL, HTML, CSS, JavaScript"
+Full Stack Developer,"Python, Flask, HTML, CSS, JavaScript, MySQL, React"
+Data Analyst,"Python, Pandas, NumPy, SQL, Excel, Machine Learning"
+ML Engineer,"Python, Pandas, NumPy, Scikit-learn, Machine Learning, TensorFlow, Keras, SQL"
+Java Developer,"Java, SQL, MySQL, HTML, CSS, JavaScript"
+Web Developer,"HTML, CSS, JavaScript, React, SQL, MySQL"
+Software Developer,"Python, Java, SQL, Git, HTML, CSS, JavaScript"
+Junior Data Scientist,"Python, Pandas, NumPy, Scikit-learn, Machine Learning, SQL"
+Backend Developer,"Python, Flask, Django, SQL, MySQL, Git"
+Frontend Developer,"HTML, CSS, JavaScript, React, Git"
+AI Developer,"Python, Machine Learning, TensorFlow, Keras, NumPy, Pandas"
+Database Developer,"SQL, MySQL, Python, Excel, Git"

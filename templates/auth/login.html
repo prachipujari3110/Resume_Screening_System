@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+
+<div class="auth-card">
+
+    <span class="pill">
+        LOGIN
+    </span>
+
+    <h1>
+        Welcome back
+    </h1>
+
+    <p>
+        Login to continue to your dashboard.
+    </p>
+
+    <form method="post"
+          class="form-grid">
+
+        <label>
+            Email
+            <input type="email"
+                   name="email"
+                   required>
+        </label>
+
+        <label>
+            Password
+            <input type="password"
+                   name="password"
+                   required>
+        </label>
+
+        <button class="btn"
+                type="submit">
+            Login
+        </button>
+
+    </form>
+
+    <div class="auth-links">
+        New candidate?
+        <a href="{{ url_for('register') }}">
+            Register
+        </a>
+        |
+        <a href="{{ url_for('admin_register') }}">
+            Admin Setup
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

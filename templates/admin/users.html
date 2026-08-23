@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Users
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+        <span class="pill">USER MANAGEMENT</span>
+
+        <h1>
+            Registered accounts
+        </h1>
+    </div>
+
+</div>
+
+
+<div class="panel table-wrap">
+
+<table>
+
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Verified</th>
+        <th>2FA</th>
+        <th>Created</th>
+    </tr>
+
+    {% for u in rows %}
+
+    <tr>
+
+        <td>{{ u.full_name }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.role }}</td>
+        <td>{{ 'Yes' if u.email_verified else 'No' }}</td>
+        <td>{{ 'On' if u.two_factor_enabled else 'Off' }}</td>
+        <td>{{ u.created_at }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}
+My Resumes
+{% endblock %}
+
+{% block content %}
+
+<div class="page-head">
+
+    <div>
+
+        <span class="pill">
+            RESUME LIBRARY
+        </span>
+
+        <h1>
+            My uploaded resumes
+        </h1>
+
+    </div>
+
+    <a class="btn"
+       href="{{ url_for('upload_resume') }}">
+        New Upload
+    </a>
+
+</div>
+
+
+<div class="panel table-wrap">
+
+<table>
+
+    <tr>
+        <th>File</th>
+        <th>Job</th>
+        <th>ATS</th>
+        <th>AI</th>
+        <th>Status</th>
+        <th>Uploaded</th>
+        <th></th>
+    </tr>
+
+    {% for r in rows %}
+
+    <tr>
+
+        <td>
+            {{ r.file_name.split('_', 1)[-1] }}
+        </td>
+
+        <td>{{ r.title }}</td>
+        <td>{{ r.ats_score }}%</td>
+        <td>{{ r.ai_score }}%</td>
+
+        <td>
+            <span class="status {{ r.status|lower }}">
+                {{ r.status }}
+            </span>
+        </td>
+
+        <td>{{ r.uploaded_at }}</td>
+
+        <td>
+            <a class="btn btn-small ghost"
+               href="{{ url_for('screening_result', rid=r.id) }}">
+                View
+            </a>
+        </td>
+
+    </tr>
+
+    {% else %}
+
+    <tr>
+        <td colspan="7" class="empty">
+            No resumes uploaded yet.
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+</div>
+
+{% endblock %}
